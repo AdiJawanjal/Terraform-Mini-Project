@@ -1,0 +1,77 @@
+# docker_container.nginx:
+resource "docker_container" "nginx" {
+    attach                                      = false
+    bridge                                      = [90mnull[0m[0m
+    command                                     = [
+        "/usr/sbin/apachectl",
+        "-D",
+        "FOREGROUND",
+    ]
+    container_read_refresh_timeout_milliseconds = 15000
+    cpu_set                                     = [90mnull[0m[0m
+    cpu_shares                                  = 0
+    domainname                                  = [90mnull[0m[0m
+    entrypoint                                  = []
+    env                                         = []
+    hostname                                    = "44636b4be3c4"
+    id                                          = "44636b4be3c4b62c541fb7d6b79e3ffa7925c86929eda5fc2223b78cbce68608"
+    image                                       = "sha256:ddc6a7ee65b05a933b7d6535a56456ce6c46bf1dc82885c00815987522ed3961"
+    init                                        = false
+    ipc_mode                                    = "private"
+    log_driver                                  = "json-file"
+    logs                                        = false
+    max_retry_count                             = 0
+    memory                                      = 0
+    memory_swap                                 = 0
+    must_run                                    = true
+    name                                        = "nginx-server"
+    network_data                                = [
+        {
+            gateway                   = "172.17.0.1"
+            global_ipv6_address       = [90mnull[0m[0m
+            global_ipv6_prefix_length = 0
+            ip_address                = "172.17.0.2"
+            ip_prefix_length          = 16
+            ipv6_gateway              = [90mnull[0m[0m
+            mac_address               = "02:42:ac:11:00:02"
+            network_name              = "bridge"
+        },
+    ]
+    network_mode                                = "default"
+    pid_mode                                    = [90mnull[0m[0m
+    privileged                                  = false
+    publish_all_ports                           = false
+    read_only                                   = false
+    remove_volumes                              = true
+    restart                                     = "no"
+    rm                                          = false
+    runtime                                     = "runc"
+    security_opts                               = []
+    shm_size                                    = 64
+    start                                       = true
+    stdin_open                                  = false
+    stop_signal                                 = [90mnull[0m[0m
+    stop_timeout                                = 0
+    tty                                         = false
+    user                                        = [90mnull[0m[0m
+    userns_mode                                 = [90mnull[0m[0m
+    wait                                        = false
+    wait_timeout                                = 60
+    working_dir                                 = [90mnull[0m[0m
+
+    ports {
+        external = 4444
+        internal = 80
+        ip       = "0.0.0.0"
+        protocol = "tcp"
+    }
+}
+
+# docker_image.myapp:
+resource "docker_image" "myapp" {
+    id           = "sha256:ddc6a7ee65b05a933b7d6535a56456ce6c46bf1dc82885c00815987522ed3961adijawanjal/wweimage:latest"
+    image_id     = "sha256:ddc6a7ee65b05a933b7d6535a56456ce6c46bf1dc82885c00815987522ed3961"
+    keep_locally = false
+    name         = "adijawanjal/wweimage:latest"
+    repo_digest  = "adijawanjal/wweimage@sha256:370ab5c8f02389446b2f0b1f0326058712e94b0b5450c0875b4308ea287446fd"
+}

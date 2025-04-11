@@ -16,7 +16,7 @@ resource "docker_image" "myapp" {
 
 resource "docker_container" "nginx" {
   name  = "nginx-server"
-  image = docker_image.myapp.name     # ✅  fixed line
+  image = docker_image.myapp.name     
   ports {
     internal = 80
     external = 4444
